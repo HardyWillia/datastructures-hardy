@@ -21,10 +21,41 @@
 #include <fstream>
 #include <cstdlib>
 #include <sstream>
+#include <vector>
+#include <list>
+#include <string>
+
+using std::list;
+using std::vector;
+using std::cout;
+using std::cin;
+using std::string;
+using std::endl;
+using std::cerr;
+using std::ifstream;
 
 
 int main(){
 
+    //vector of integer lists called adjList for adjacency list
+    vector <list<int>> adjList;
 
-    return 0;
+    //Prompt the user for a file that has the graph data
+    ifstream graphFile;
+    string filename;
+    
+
+    cout << "Enter a file name: ";
+    cin >> filename;
+
+    graphFile.open(filename);
+
+    //Check to make sure the file can open
+    if(!graphFile){
+        cerr << "File cannot be opened." << endl;
+        exit(1);
+    }
+
+    graphFile.close();
+
 }
