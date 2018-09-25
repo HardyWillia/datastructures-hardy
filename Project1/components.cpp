@@ -38,7 +38,7 @@ using std::ifstream;
 int main(){
 
     //vector of integer lists called adjList for adjacency list
-    vector <list<int>> adjList;
+    vector <list<int> > adjList;
 
     //Prompt the user for a file that has the graph data
     ifstream graphFile;
@@ -48,7 +48,7 @@ int main(){
     cout << "Enter a file name: ";
     cin >> filename;
 
-    graphFile.open(filename);
+    graphFile.open(filename.c_str());
 
     //Check to make sure the file can open
     if(!graphFile){
