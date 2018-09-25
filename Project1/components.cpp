@@ -1,3 +1,11 @@
+/*  
+    Willia Hardy
+    wjh26@zips.uakron.edu
+    2905326
+    Project 1
+
+*/
+
 /*This file:
     - Declares an adjacency list
     - Prompts the user for input file to graph data
@@ -14,3 +22,9 @@
 #include <cstdlib>
 #include <sstream>
 
+
+int main(){
+
+
+    return 0;
+}
