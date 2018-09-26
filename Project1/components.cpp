@@ -74,6 +74,13 @@ int main(){
  	//Function to find the number that is greater than in a list
      list<int>::iterator find_gt(list<int>::iterator start, list<int>::iterator stop, int x){
 
+         for(list<int>::iterator temp = start; temp != stop; temp++){
+             if(*temp > x)
+                return temp;
+         }
+
+            return start;
+
 	}
 
 	//Assumes lists are sorted in ascending order and elements are unique
