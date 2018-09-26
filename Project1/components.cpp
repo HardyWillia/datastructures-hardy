@@ -45,7 +45,7 @@ int main(){
     ifstream graphFile;
     string filename;
 
-    cout << "Enter a file name: ";
+    cout << "Please enter the graph file name to process: ";
     cin >> filename;
 
     string filepath = "/home/hardyl/datastructures-hardy/Project1/" + filename;
@@ -63,5 +63,15 @@ int main(){
 	else cout << "Unable to open the file" << endl;
 
 	return 0;
+
+     //Function to find the number that is greater than in a list
+
+     list<int>::iterator find_gt(list<int>::iterator start, list<int>::iterator stop, int x){
+
+
+
+
+
+	}
 
 }
