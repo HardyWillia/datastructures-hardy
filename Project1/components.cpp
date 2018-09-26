@@ -64,14 +64,25 @@ int main(){
 
 	return 0;
 
-     //Function to find the number that is greater than in a list
+}
+    
 
+ 	//Function to find the number that is greater than in a list
      list<int>::iterator find_gt(list<int>::iterator start, list<int>::iterator stop, int x){
 
+	}
 
+	//Assumes lists are sorted in ascending order and elements are unique
+     bool connComponent (const list<int> & conn1, const list<int> & conn2){
 
 
 
 	}
 
-}
+	//Merges two lists together as long as they have at least one common element
+    bool merge2(list<int> & cp1, list<int> & cp2){
+
+
+	}
+
+
