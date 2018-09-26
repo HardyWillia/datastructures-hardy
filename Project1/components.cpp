@@ -67,6 +67,10 @@ int main(){
 }
     
 
+    //Function to display the list
+    void displayList(){
+        
+    }
  	//Function to find the number that is greater than in a list
      list<int>::iterator find_gt(list<int>::iterator start, list<int>::iterator stop, int x){
 
