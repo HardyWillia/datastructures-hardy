@@ -39,23 +39,29 @@ int main(){
 
     //vector of integer lists called adjList for adjacency list
     vector <list<int> > adjList;
+    string line;
 
     //Prompt the user for a file that has the graph data
     ifstream graphFile;
     string filename;
-    
 
     cout << "Enter a file name: ";
     cin >> filename;
 
-    graphFile.open(filename.c_str());
+    string filepath = "/home/hardyl/datastructures-hardy/Project1/" + filename;
+
+    graphFile.open(filepath.c_str());
 
     //Check to make sure the file can open
-    if(!graphFile){
-        cerr << "File cannot be opened." << endl;
-        exit(1);
-    }
+    if(graphFile.is_open()){
+	while(getline(graphFile, line)){
+		cout << line << "\n";
+	}
 
-    graphFile.close();
+	graphFile.close();
+	}
+	else cout << "Unable to open the file" << endl;
+
+	return 0;
 
 }
