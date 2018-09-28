@@ -33,6 +33,7 @@ using std::string;
 using std::endl;
 using std::cerr;
 using std::ifstream;
+using std::istringstream;
 
 
 
@@ -85,7 +86,9 @@ int main(){
 
     //vector of integer lists called adjList for adjacency list
     vector <list<int> > adjList;
+    list<int> emptyList;
     string line;
+    string readline;
 
     //Prompt the user for a file that has the graph data
     ifstream graphFile;
@@ -107,6 +110,59 @@ int main(){
 	graphFile.close();
 	}
 	else cout << "Unable to open the file" << endl;
+
+    //Find_gt method, sorting the list as it is populated
+
+    istringstream iss(line);
+    for(string s; iss >> s;){
+
+        int i = std::stoi(s);
+        if(emptyList.size() == 0)
+        emptyList.push_back(i);
+        else{
+            list<int>::iterator greater = find_gt(emptyList.begin(), emptyList.end(), i);
+            emptyList.insert(greater, i);
+        }
+    }
+
+    adjList.push_back(emptyList);
+
+    displayList(adjList);
+
+    while(true){
+
+        int listID1;
+        int listID2;
+
+        cout << "Enter the two list IDs to potentially merge together (or -1 to quit: ";
+        cin >> listID1;
+
+        cin >> listID2;
+
+        if(listID1 == -1 || listID2 == -1){
+            break;
+        } else {
+
+            std::list<int> list1;
+            std::list<int> list2;
+            const bool merged = merge2(list1,list2);
+
+            cout << "The lists are " << (merged ? "" : "not ") << "merged." << endl;
+
+            if(merged){
+
+                for(vector<list<int> >::iterator node = adjList.begin(); node != adjList.end(); node++){
+                    if(node->size() == 0){
+                        //Remove from list
+                        adjList.erase(node);
+                        break;
+                    }
+                }
+            }
+
+            displayList(adjList);
+        }
+    }
 
 	return 0;
 
