@@ -173,7 +173,7 @@ int main(){
     istringstream iss(line);
     for(string s; iss >> s;){
 
-        int i = std::stoi(s);
+        int i = std::atoi(s.c_str());
         if(emptyList.size() == 0)
         emptyList.push_back(i);
         else{
