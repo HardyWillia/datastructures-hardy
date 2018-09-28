@@ -68,9 +68,23 @@ int main(){
     
 
     //Function to display the list
-    void displayList(){
+    void displayList(vector <list<int> > adjList){
+
+        cout << "The adjacency list for your graph: " << endl;
         
+        for(vector<list<int> >::iterator node = adjList.begin(); node != adjList.end(); node++){
+            int itList = node - adjList.begin();
+            cout << "List " << itList << ": ";
+
+            for(auto currentLine = node->begin(); currentLine != node->end(); currentLine++ ){
+                cout << *currentLine << ' ' << endl;
+            }
+
+            cout << '\n';
+        }
     }
+
+
  	//Function to find the number that is greater than in a list
      list<int>::iterator find_gt(list<int>::iterator start, list<int>::iterator stop, int x){
 
@@ -79,12 +93,12 @@ int main(){
                 return temp;
          }
 
-            return start;
+            return stop;
 
 	}
 
 	//Assumes lists are sorted in ascending order and elements are unique
-     bool connComponent (const list<int> & conn1, const list<int> & conn2){
+     bool connComponent (const list<int> &conn1, const list<int> &conn2){
 
 
 
