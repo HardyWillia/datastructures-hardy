@@ -70,14 +70,69 @@ using std::istringstream;
 	//Assumes lists are sorted in ascending order and elements are unique
      bool connComponent (const list<int> &conn1, const list<int> &conn2){
 
+         const int conn1Size = conn1.size();
+         const int conn2Size = conn2.size();
+         vector<int, bool> m;
+        
+        const int upperBound = (conn1Size < conn2Size ? conn2Size : conn1Size);
 
+        list<int>::const_iterator conn1Iterator = conn1.begin();
+        list<int>::const_iterator conn2Iterator = conn2.begin();
+
+        for (int i = 0; i < upperBound; i++)
+        {   
+            // Make sure we do not try to access element beyond bounds of A
+            if (i < conn1Size)
+            {
+                const int currentConn1Value = *conn1Iterator;
+                // Test if value is already in map, if yes return true
+            if (m[currentConn1Value])
+            {
+                return true;
+            }
+            // Add new value to map
+            m[currentConn1Value] = true;
+            ++conn1Iterator;
+        }
+        // Make sure we do not try to access element beyond bounds of B
+        if (i < conn2Size)
+        {
+            const int currentConn2Value = *conn2Iterator;
+            // Test if value is already in map, if yes return true
+            if (m[currentConn2Value])
+            {
+                return true;
+            }
+            // Add new value to map
+            m[currentConn2Value] = true;
+            ++conn2Iterator;
+        }
+    }
+    return false;
 
 	}
 
 	//Merges two lists together as long as they have at least one common element
     bool merge2(list<int> & cp1, list<int> & cp2){
 
+            const int cp1Size = cp1.size();
+            const int cp2Size = cp2.size();
 
+        // Determine which list we will merge into
+            list<int> &listMergingTo = cp1Size < cp2Size ? cp2 : cp1;
+            list<int> &listMergingFrom = cp1Size < cp2Size ? cp1 : cp2;
+
+        for (auto from = listMergingFrom.begin(); from != listMergingFrom.end(); ++from)
+        {
+            const int initial = *from;
+            list<int>::iterator greater = find_gt(listMergingTo.begin(), listMergingTo.end(), initial);
+            listMergingTo.insert(greater, initial);
+        }
+        // Make the merged list unique
+        listMergingTo.unique();
+        // Clear out old list
+        listMergingFrom.clear();
+        return true;
 	}
 
 
