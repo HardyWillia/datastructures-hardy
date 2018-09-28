@@ -24,6 +24,7 @@
 #include <vector>
 #include <list>
 #include <string>
+#include <functional>
 
 using std::list;
 using std::vector;
