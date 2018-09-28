@@ -49,7 +49,7 @@ using std::map;
             cout << "List " << itList << ": ";
 
             for(list<int>::iterator currentLine = node->begin(); currentLine != node->end(); currentLine++ ){
-                cout << *currentLine << ' ' << endl;
+                cout << *currentLine << ' ';
             }
 
             cout << '\n';
