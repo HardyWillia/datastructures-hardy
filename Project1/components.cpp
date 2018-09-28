@@ -191,12 +191,15 @@ int main(){
         int listID1;
         int listID2;
 
-        cout << "Enter the two list IDs to potentially merge together (or -1 to quit: ";
+        cout << "Enter the two list IDs to potentially merge together (or -1 to quit): ";
         cin >> listID1;
 
+        if(listID1 == -1){
+            break;
+        }
         cin >> listID2;
 
-        if(listID1 == -1 || listID2 == -1){
+        if(listID2 == -1){
             break;
         } else {
 
