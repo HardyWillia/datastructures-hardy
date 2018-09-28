@@ -35,37 +35,6 @@ using std::cerr;
 using std::ifstream;
 
 
-int main(){
-
-    //vector of integer lists called adjList for adjacency list
-    vector <list<int> > adjList;
-    string line;
-
-    //Prompt the user for a file that has the graph data
-    ifstream graphFile;
-    string filename;
-
-    cout << "Please enter the graph file name to process: ";
-    cin >> filename;
-
-    string filepath = "/home/hardyl/datastructures-hardy/Project1/" + filename;
-
-    graphFile.open(filepath.c_str());
-
-    //Check to make sure the file can open
-    if(graphFile.is_open()){
-	while(getline(graphFile, line)){
-		cout << line << "\n";
-	}
-
-	graphFile.close();
-	}
-	else cout << "Unable to open the file" << endl;
-
-	return 0;
-
-}
-    
 
     //Function to display the list
     void displayList(vector <list<int> > adjList){
@@ -109,5 +78,39 @@ int main(){
 
 
 	}
+
+
+//Run the program
+int main(){
+
+    //vector of integer lists called adjList for adjacency list
+    vector <list<int> > adjList;
+    string line;
+
+    //Prompt the user for a file that has the graph data
+    ifstream graphFile;
+    string filename;
+
+    cout << "Please enter the graph file name to process: ";
+    cin >> filename;
+
+    string filepath = "/home/hardyl/datastructures-hardy/Project1/" + filename;
+
+    graphFile.open(filepath.c_str());
+
+    //Check to make sure the file can open
+    if(graphFile.is_open()){
+	while(getline(graphFile, line)){
+		cout << line << "\n";
+	}
+
+	graphFile.close();
+	}
+	else cout << "Unable to open the file" << endl;
+
+	return 0;
+
+}
+    
 
 
