@@ -25,6 +25,7 @@
 #include <list>
 #include <string>
 #include <functional>
+#include <map>
 
 using std::list;
 using std::vector;
@@ -35,6 +36,7 @@ using std::endl;
 using std::cerr;
 using std::ifstream;
 using std::istringstream;
+using std::map;
 
 
 
@@ -73,7 +75,7 @@ using std::istringstream;
 
          const int conn1Size = conn1.size();
          const int conn2Size = conn2.size();
-         vector<int, bool> m;
+         map<int, bool> m;
         
         const int upperBound = (conn1Size < conn2Size ? conn2Size : conn1Size);
 
