@@ -48,7 +48,7 @@ using std::map;
             int itList = node - adjList.begin();
             cout << "List " << itList << ": ";
 
-            for(auto currentLine = node->begin(); currentLine != node->end(); currentLine++ ){
+            for(list<int>::iterator currentLine = node->begin(); currentLine != node->end(); currentLine++ ){
                 cout << *currentLine << ' ' << endl;
             }
 
@@ -124,7 +124,7 @@ using std::map;
             list<int> &listMergingTo = cp1Size < cp2Size ? cp2 : cp1;
             list<int> &listMergingFrom = cp1Size < cp2Size ? cp1 : cp2;
 
-        for (auto from = listMergingFrom.begin(); from != listMergingFrom.end(); ++from)
+        for (list<int>::iterator from = listMergingFrom.begin(); from != listMergingFrom.end(); ++from)
         {
             const int initial = *from;
             list<int>::iterator greater = find_gt(listMergingTo.begin(), listMergingTo.end(), initial);
