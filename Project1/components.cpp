@@ -24,7 +24,7 @@
 #include <vector>
 #include <list>
 #include <string>
-#include <map>
+
 
 using std::list;
 using std::vector;
@@ -35,27 +35,31 @@ using std::endl;
 using std::cerr;
 using std::ifstream;
 using std::istringstream;
-using std::map;
+
 
 
 
     //Function to display the list
-    void displayList(vector <list<int> > adjList){
+    void displayList(vector<list<int> > adjList){
+
+        int itList = 0;
+        vector<list<int> >::iterator node;
+        list<int>::iterator currentLine;
 
         cout << "The adjacency list for your graph: " << endl;
         
-        for(vector<list<int> >::iterator node = adjList.begin(); node != adjList.end(); node++){
-            int itList = node - adjList.begin();
+        for(node = adjList.begin(); node != adjList.end(); ++node){
+            
             cout << "List " << itList << ": ";
 
-            for(list<int>::iterator currentLine = node->begin(); currentLine != node->end(); currentLine++ ){
+            for(currentLine = node->begin(); currentLine != node->end(); ++currentLine ){
                 cout << *currentLine << ' ';
             }
 
             cout << '\n';
+            itList++;
         }
     }
-
 
  	//Function to find the number that is greater than in a list
      list<int>::iterator find_gt(list<int>::iterator start, list<int>::iterator stop, int x){
@@ -69,48 +73,66 @@ using std::map;
 
 	}
 
+    //Function to load the file and save it in the list
+    vector<list<int> > get_file(){
+
+        ifstream graphFile;
+        string filename;
+        string line;
+        vector <list<int> > adjList;
+        list<int> emptyList;
+
+
+        //Prompt the user for a file that has the graph data
+        cout << "Please enter the graph file name to process: ";
+        cin >> filename;
+
+        string filepath = "/home/hardyl/datastructures-hardy/Project1/" + filename;
+        graphFile.open(filepath.c_str());
+
+        //Check to make sure the file can open
+            while(getline(graphFile, line)){
+            
+            //Check to make sure the file is actually printing
+                cout << line << "\n";
+
+            //Prints the ordered list as it is ordered
+                istringstream iss(line);
+                for(string s; iss >> s;){
+
+                    int i = std::atoi(s.c_str());
+                    if(emptyList.size() == 0){
+                        emptyList.push_back(i);
+                    }
+                    else{
+                        list<int>::iterator greater = find_gt(emptyList.begin(), emptyList.end(), i);
+                        emptyList.insert(greater, i);
+                    }
+                }
+            adjList.push_back(emptyList);
+            
+            }
+            return adjList;
+}
+
+
+
+
 	//Assumes lists are sorted in ascending order and elements are unique
-     bool connComponent (const list<int> &conn1, const list<int> &conn2){
+     bool connComponent (const list<int> &connComp1, const list<int> &connComp2){
 
-         const int conn1Size = conn1.size();
-         const int conn2Size = conn2.size();
-         map<int, bool> m;
-        
-        const int upperBound = (conn1Size < conn2Size ? conn2Size : conn1Size);
-
-        list<int>::const_iterator conn1Iterator = conn1.begin();
-        list<int>::const_iterator conn2Iterator = conn2.begin();
-
-        for (int i = 0; i < upperBound; i++)
-        {   
-            // Make sure we do not try to access element beyond bounds of A
-            if (i < conn1Size)
-            {
-                const int currentConn1Value = *conn1Iterator;
-                // Test if value is already in map, if yes return true
-            if (m[currentConn1Value])
-            {
-                return true;
+        list<int>::const_iterator conn1;
+        list<int>::const_iterator conn2;
+  
+        for(conn1 = connComp1.begin(); conn1 != connComp2.end(); ++conn1){
+            for(conn2 = connComp1.begin(); conn2 != connComp2.end(); ++conn2){
+                    if(*conn1 == *conn2){
+                        return true;
+                    }
             }
-            // Add new value to map
-            m[currentConn1Value] = true;
-            ++conn1Iterator;
         }
-        // Make sure we do not try to access element beyond bounds of B
-        if (i < conn2Size)
-        {
-            const int currentConn2Value = *conn2Iterator;
-            // Test if value is already in map, if yes return true
-            if (m[currentConn2Value])
-            {
-                return true;
-            }
-            // Add new value to map
-            m[currentConn2Value] = true;
-            ++conn2Iterator;
-        }
-    }
-    return false;
+
+            return false;
 
 	}
 
@@ -138,52 +160,17 @@ using std::map;
 	}
 
 
+
 //Run the program
 int main(){
 
     //vector of integer lists called adjList for adjacency list
     vector <list<int> > adjList;
-    list<int> emptyList;
-    string line;
-    string readline;
 
-    //Prompt the user for a file that has the graph data
-    ifstream graphFile;
-    string filename;
+    //Create the list from the file
+    adjList = get_file();
 
-    cout << "Please enter the graph file name to process: ";
-    cin >> filename;
-
-    string filepath = "/home/hardyl/datastructures-hardy/Project1/" + filename;
-
-    graphFile.open(filepath.c_str());
-
-    //Check to make sure the file can open
-    if(graphFile.is_open()){
-	while(getline(graphFile, line)){
-		cout << line << "\n";
-	}
-
-	graphFile.close();
-	}
-	else cout << "Unable to open the file" << endl;
-
-    //Find_gt method, sorting the list as it is populated
-
-    istringstream iss(line);
-    for(string s; iss >> s;){
-
-        int i = std::atoi(s.c_str());
-        if(emptyList.size() == 0)
-        emptyList.push_back(i);
-        else{
-            list<int>::iterator greater = find_gt(emptyList.begin(), emptyList.end(), i);
-            emptyList.insert(greater, i);
-        }
-    }
-
-    adjList.push_back(emptyList);
-
+    //Display the list
     displayList(adjList);
 
     while(true){
@@ -224,9 +211,10 @@ int main(){
         }
     }
 
-	return 0;
-
 }
+
+
+
     
 
 
