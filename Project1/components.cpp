@@ -145,14 +145,18 @@ using std::istringstream;
             const int cp1Size = cp1.size();
             const int cp2Size = cp2.size();
 
+            list<int>::iterator greater;
+            list<int>::iterator from;
+
         // Determine which list we will merge into
             list<int> &listMergingTo = cp1Size < cp2Size ? cp2 : cp1;
             list<int> &listMergingFrom = cp1Size < cp2Size ? cp1 : cp2;
 
-        for (list<int>::iterator from = listMergingFrom.begin(); from != listMergingFrom.end(); ++from)
+
+        for (from = listMergingFrom.begin(); from != listMergingFrom.end(); ++from)
         {
-            const int initial = *from;
-            list<int>::iterator greater = find_gt(listMergingTo.begin(), listMergingTo.end(), initial);
+            int initial = *from;
+            greater = find_gt(listMergingTo.begin(), listMergingTo.end(), initial);
             listMergingTo.insert(greater, initial);
         }
         // Make the merged list unique
@@ -193,16 +197,19 @@ int main(){
             break;
         } else {
 
-            std::list<int> list1;
-            std::list<int> list2;
+            list<int> &list1 = adjList.at(listID1);
+            list<int> &list2 = adjList.at(listID2);
             const bool merged = merge2(list1,list2);
 
             cout << "The lists are " << (merged ? "" : "not ") << "merged." << endl;
 
             if(merged){
 
+                //Loop over each element to delete the lists that are empty
                 for(vector<list<int> >::iterator node = adjList.begin(); node != adjList.end(); node++){
+                    
                     if(node->size() == 0){
+                        
                         //Remove from list
                         adjList.erase(node);
                         break;
@@ -213,7 +220,6 @@ int main(){
             displayList(adjList);
         }
     }
-
 }
 
 
