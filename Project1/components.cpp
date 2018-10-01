@@ -32,14 +32,13 @@ using std::cout;
 using std::cin;
 using std::string;
 using std::endl;
-using std::cerr;
 using std::ifstream;
 using std::istringstream;
 
 
 
 
-    //Function to display the list
+    //Function to display the list every time it is merged
     void displayList(vector<list<int> > adjList){
 
         int itList = 0;
@@ -88,8 +87,15 @@ using std::istringstream;
         cout << "Please enter the graph file name to process: ";
         cin >> filename;
 
-        string filepath = "/home/hardyl/datastructures-hardy/Project1/" + filename;
-        graphFile.open(filepath.c_str());
+        /*The two lines below had to be used on my computer because the file couldn't be found using cmake
+            - The file path was manipulated to make sure the compiler found graph.dat
+            - Will not be needed if running in Codeblocks or using g++
+            - Use this way and change the file path if the file cannot be found
+        */
+        //string filepath = "/home/hardyl/datastructures-hardy/Project1/" + filename;
+        //graphFile.open(filepath.c_str());
+
+        graphFile.open(filename.c_str());
 
         //Check to make sure the file can open
             while(getline(graphFile, line)){
@@ -185,13 +191,18 @@ int main(){
         int listID1;
         int listID2;
 
-        cout << "Enter the two list IDs to potentially merge together (or -1 to quit): ";
+        cout << "Enter the two list IDs to potentially merge together (or -1 to quit): " << endl;
+        cout << "First list to merge: ";
         cin >> listID1;
+        cout << "\n";
 
         if(listID1 == -1){
             break;
         }
+
+        cout << "Second list to merge: ";
         cin >> listID2;
+        cout << "\n";
 
         if(listID2 == -1){
             break;
@@ -201,7 +212,7 @@ int main(){
             list<int> &list2 = adjList.at(listID2);
             const bool merged = merge2(list1,list2);
 
-            cout << "The lists are " << (merged ? "" : "not ") << "merged." << endl;
+            cout << "The lists you chose are " << (merged ? "" : "not ") << "merged." << endl;
 
             if(merged){
 
