@@ -102,7 +102,7 @@ using std::istringstream;
 
                     int i = std::atoi(s.c_str());
                     if(emptyList.size() == 0){
-                        emptyList.push_back(i);
+                        emptyList.insert(emptyList.begin(), i);
                     }
                     else{
                         list<int>::iterator greater = find_gt(emptyList.begin(), emptyList.end(), i);
