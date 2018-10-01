@@ -81,6 +81,7 @@ using std::istringstream;
         string line;
         vector <list<int> > adjList;
         list<int> emptyList;
+        list<int>::iterator greater = emptyList.begin();
 
 
         //Prompt the user for a file that has the graph data
@@ -102,18 +103,20 @@ using std::istringstream;
 
                     int i = std::atoi(s.c_str());
                     if(emptyList.size() == 0){
-                        emptyList.insert(emptyList.begin(), i);
+                        emptyList.insert(greater, i);
                     }
                     else{
-                        list<int>::iterator greater = find_gt(emptyList.begin(), emptyList.end(), i);
+                        greater = find_gt(emptyList.begin(), emptyList.end(), i);
                         emptyList.insert(greater, i);
                     }
                 }
             adjList.push_back(emptyList);
+            emptyList.clear();
+            greater = emptyList.begin();
             
             }
             return adjList;
-}
+    }
 
 
 
