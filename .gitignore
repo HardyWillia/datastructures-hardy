@@ -2,4 +2,5 @@
 
 /Project1/build/
 
-/Project1/CMakeLists.txt
+/Project2/build/
+#/Project1/CMakeLists.txt
