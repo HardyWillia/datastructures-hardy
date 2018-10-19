@@ -87,3 +87,16 @@ vector<Employee> employees()
 
 }
 
+
+// Function to build a map of Employee vector based on deptID
+map<int,vector<Employee>> mapEmpDept(vector<Employee> & emp)
+{
+    map<int, vector<Employee>> deptID;
+
+    for(int i = 0; i <= emp.size(); i++)
+    {
+        int dept_num = emp[i].id() / 100;
+        deptID[dept_num].push_back(emp[i]);
+    }
+
+}
