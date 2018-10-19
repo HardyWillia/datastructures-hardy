@@ -100,3 +100,94 @@ map<int,vector<Employee>> mapEmpDept(vector<Employee> & emp)
     }
 
 }
+
+// Function to build of map of Employees vector based on salary range
+map<int,vector<Employee>> mapSalRange(vector<Employee> & emp)
+{
+    map<int, vector<Employee>> salary;
+
+    for(int i = 0; i <= emp.size(); i++)
+    {
+        int sal_range = (emp[i].sal() / 10000) * 10000;
+        salary[sal_range].push_back(emp[i]);
+
+    }
+}
+
+//Print salary ranges
+//Determine the range with the most employees
+void printSalRange(map<int, vector<Employee>> &salRange)
+{
+    int largestSize = 0;
+    int largestGrouping = 0;
+
+    for (auto i = salRange.begin(); i != salRange.end(); ++i)
+    {
+        int empCount = i->second.size();
+        int groupCount = i->first;
+
+        cout << "ORDERED Map Salary Range " << groupCount << " contains " << empCount << endl;
+        
+        // Check to see if we found a range with more employees
+        if (empCount > largestSize)
+        {
+            largestGrouping = groupCount;
+            largestSize = empCount;
+        }
+    }
+
+    cout << "ORDERED Map Salary Range with most employees: " << largestGrouping << " containing " << largestSize << " employees" << endl;
+}
+
+//Functions below are the same as above, except, they have an unordered map
+
+// Function to build an UNORDERED map of Employee vector based on deptID
+unordered_map<int,vector<Employee>> unorderedmapEmpDept(vector<Employee> & emp)
+{
+    unordered_map<int, vector<Employee>> deptID;
+
+    for(int i = 0; i <= emp.size(); i++)
+    {
+        int dept_num = emp[i].id() / 100;
+        deptID[dept_num].push_back(emp[i]);
+    }
+
+}
+
+// Function to build an UNORDERED map of Employees vector based on salary range
+unordered_map<int,vector<Employee>> unorderedmapSalRange(vector<Employee> & emp)
+{
+    unordered_map<int, vector<Employee>> salary;
+
+    for(int i = 0; i <= emp.size(); i++)
+    {
+        int sal_range = (emp[i].sal() / 10000) * 10000;
+        salary[sal_range].push_back(emp[i]);
+
+    }
+}
+
+//Print salary ranges
+//Determine the range with the most employees
+void printUnorderedSalRange(unordered_map<int, vector<Employee>> &salRange)
+{
+    int largestSize = 0;
+    int largestGrouping = 0;
+
+    for (auto i = salRange.begin(); i != salRange.end(); ++i)
+    {
+        int empCount = i->second.size();
+        int groupCount = i->first;
+
+        cout << "UNORDERED Map Salary Range " << groupCount << " contains " << empCount << endl;
+       
+        // Check to see if we found a range with more employees
+        if (empCount > largestSize)
+        {
+            largestGrouping = groupCount;
+            largestSize = empCount;
+        }
+    }
+
+    cout << "UNORDERED Map Salary Range with most employees: " << largestGrouping << " containing " << largestSize << " employees" << endl;
+}
