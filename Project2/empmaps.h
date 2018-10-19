@@ -4,7 +4,7 @@
 #include <vector>
 #include <map>
 #include <unordered_map>
-#include "../Employee/Employee.h"
+#include "Employee.h"
 
 using std::vector;
 using std::map;
