@@ -55,6 +55,7 @@ vector<string> get_file(){
         }
     }
 
+    return lines;
 }
 
 //Function to read the data from the file and build the Employee vector
@@ -142,7 +143,7 @@ void printSalRange(map<int, vector<Employee>> &salRange)
 //Functions below are the same as above, except, they have an unordered map
 
 // Function to build an UNORDERED map of Employee vector based on deptID
-unordered_map<int,vector<Employee>> unorderedmapEmpDept(vector<Employee> & emp)
+unordered_map<int,vector<Employee>> umapEmpDept(vector<Employee> & emp)
 {
     unordered_map<int, vector<Employee>> deptID;
 
@@ -155,7 +156,7 @@ unordered_map<int,vector<Employee>> unorderedmapEmpDept(vector<Employee> & emp)
 }
 
 // Function to build an UNORDERED map of Employees vector based on salary range
-unordered_map<int,vector<Employee>> unorderedmapSalRange(vector<Employee> & emp)
+unordered_map<int,vector<Employee>> umapSalRange(vector<Employee> & emp)
 {
     unordered_map<int, vector<Employee>> salary;
 
@@ -169,7 +170,7 @@ unordered_map<int,vector<Employee>> unorderedmapSalRange(vector<Employee> & emp)
 
 //Print salary ranges
 //Determine the range with the most employees
-void printUnorderedSalRange(unordered_map<int, vector<Employee>> &salRange)
+void uprintSalaryRange(unordered_map<int, vector<Employee>> &salRange)
 {
     int largestSize = 0;
     int largestGrouping = 0;

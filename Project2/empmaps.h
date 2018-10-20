@@ -1,3 +1,11 @@
+/*
+
+    Willia Hardy
+    wjh26@zips.uakron.edu
+    2905326
+    Project2
+*/
+
 #ifndef EMPMAPS_H_INCLUDED
 #define EMPMAPS_H_INCLUDED
 
