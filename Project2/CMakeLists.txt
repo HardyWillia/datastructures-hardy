@@ -9,7 +9,7 @@ macro(use_cxx11)
 endmacro(use_cxx11)
 
 project(project2 CXX)
-cmake_minimum_required(2.8)
+cmake_minimum_required(VERSION 2.8)
 
 add_executable(project2
 
