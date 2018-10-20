@@ -44,13 +44,13 @@ int main(){
 
     //Clock ticks for Ordered Map
     start = clock();
-    map<int,vector<Employee>> omapDept = mapEmpDept(emps);
+    map<int,vector<Employee> > omapDept = mapEmpDept(emps);
     stop = clock();
     cout << "Clock ticks for mapEmpDept: " << double(stop - start) << "\n";
     cout << "Number of departments in Ordered Map: " << omapDept.size() << endl;
 
     start = clock();
-    map<int, vector<Employee>> omapSal = mapSalRange(emps);
+    map<int, vector<Employee> > omapSal = mapSalRange(emps);
     stop = clock();
     cout << "Clock ticks for mapSalRange: " << double(stop - start) << "\n";
     cout << "Number of salary ranges in Ordered Map: " << omapSal.size() << endl;
@@ -63,14 +63,14 @@ int main(){
 
     //Clock ticks for Unordered maps
     start = clock();
-    unordered_map<int,vector<Employee>> umapDept = umapEmpDept(emps);
+    unordered_map<int,vector<Employee> > umapDept = umapEmpDept(emps);
     stop = clock();
     cout << "Clock ticks for umapEmpDept: " << double(stop - start) << "\n";
     cout << "Number of departments in Unrdered Map: " << umapDept.size() << endl;
 
 
     start = clock();
-    unordered_map<int, vector<Employee>> umapSal = umapSalRange(emps);
+    unordered_map<int, vector<Employee> > umapSal = umapSalRange(emps);
     stop = clock();
     cout << "Clock ticks for umapSalRange: " << double(stop - start) << "\n";
     cout << "Number of salary ranges in Unrdered Map: " << umapSal.size() << endl;
