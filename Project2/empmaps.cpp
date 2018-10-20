@@ -90,7 +90,7 @@ vector<Employee> employees()
 
 
 // Function to build a map of Employee vector based on deptID
-map<int,vector<Employee>> mapEmpDept(vector<Employee> & emp)
+map<int,vector<Employee> > mapEmpDept(vector<Employee> & emp)
 {
     map<int, vector<Employee>> deptID;
 
@@ -103,7 +103,7 @@ map<int,vector<Employee>> mapEmpDept(vector<Employee> & emp)
 }
 
 // Function to build of map of Employees vector based on salary range
-map<int,vector<Employee>> mapSalRange(vector<Employee> & emp)
+map<int,vector<Employee> > mapSalRange(vector<Employee> & emp)
 {
     map<int, vector<Employee>> salary;
 
@@ -117,7 +117,7 @@ map<int,vector<Employee>> mapSalRange(vector<Employee> & emp)
 
 //Print salary ranges
 //Determine the range with the most employees
-void printSalRange(map<int, vector<Employee>> &salRange)
+void printSalRange(map<int, vector<Employee> > &salRange)
 {
     int largestSize = 0;
     int largestGrouping = 0;
@@ -143,7 +143,7 @@ void printSalRange(map<int, vector<Employee>> &salRange)
 //Functions below are the same as above, except, they have an unordered map
 
 // Function to build an UNORDERED map of Employee vector based on deptID
-unordered_map<int,vector<Employee>> umapEmpDept(vector<Employee> & emp)
+unordered_map<int,vector<Employee> > umapEmpDept(vector<Employee> & emp)
 {
     unordered_map<int, vector<Employee>> deptID;
 
@@ -156,7 +156,7 @@ unordered_map<int,vector<Employee>> umapEmpDept(vector<Employee> & emp)
 }
 
 // Function to build an UNORDERED map of Employees vector based on salary range
-unordered_map<int,vector<Employee>> umapSalRange(vector<Employee> & emp)
+unordered_map<int,vector<Employee> > umapSalRange(vector<Employee> & emp)
 {
     unordered_map<int, vector<Employee>> salary;
 
@@ -170,7 +170,7 @@ unordered_map<int,vector<Employee>> umapSalRange(vector<Employee> & emp)
 
 //Print salary ranges
 //Determine the range with the most employees
-void uprintSalaryRange(unordered_map<int, vector<Employee>> &salRange)
+void uprintSalaryRange(unordered_map<int, vector<Employee> > &salRange)
 {
     int largestSize = 0;
     int largestGrouping = 0;
