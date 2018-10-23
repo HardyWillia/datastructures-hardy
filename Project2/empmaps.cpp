@@ -5,9 +5,8 @@
     Project 2
 */
 
-//include statements
+//include
 #include "empmaps.h"
-
 #include "Employee.h"
 #include <fstream>
 #include <unordered_map>
@@ -23,6 +22,7 @@
 #include <string>
 #include <sstream>
 
+//using
 using std::cin;
 using std::cout;
 using std::endl;
@@ -36,6 +36,7 @@ using std::vector;
 
 
 //Function to get the input files
+//Same implementation from Project1, but included a fail condition
 vector<string> get_file(){
 
     ifstream recordFile;
@@ -65,9 +66,7 @@ vector<string> get_file(){
     return lines;
 }
 
-/*
-    Read data file and build a vector of Employees
-*/
+//Function to build a vector of employees after the data is read
 vector<Employee> employees()
 {
     vector<Employee> empvec;
@@ -101,10 +100,7 @@ vector<Employee> employees()
 
 }
 
-/*
-    Build a map of Employees from the vector of employees
-    based on the department id
-*/
+//Function to build an ordered map based on department ID
 map<int, vector<Employee>> mapEmpDept(vector<Employee> &emp)
 {
 
@@ -117,10 +113,7 @@ map<int, vector<Employee>> mapEmpDept(vector<Employee> &emp)
     return empMap;
 }
 
-/*
-    Build a map of Employees from the vector of employees
-    based on salary range
-*/
+//Function to build an ordered map based on salary
 map<int, vector<Employee>> mapSalRange(vector<Employee> &emp)
 {
     map<int, vector<Employee>> empMap;
@@ -133,10 +126,7 @@ map<int, vector<Employee>> mapSalRange(vector<Employee> &emp)
     return empMap;
 }
 
-/*
-    Print the map of salary ranges
-    Determine which range has the most employees
-*/
+//Print the ordered map of salary ranges
 void printSalRange(map<int, vector<Employee>> &salRange)
 {
     int largestSize = 0;
@@ -158,10 +148,7 @@ void printSalRange(map<int, vector<Employee>> &salRange)
     cout << "ORDERED Map Salary Range with most employees: " << largestGrouping << " containing " << largestSize << " employees" << endl;
 }
 
-/*
-    Build a unordered map of Employees from the vector of employees
-    based on the department id
-*/
+//Function to build an unordered map based on department ID
 unordered_map<int, vector<Employee>> umapEmpDept(vector<Employee> &emp)
 {
     unordered_map<int, vector<Employee>> empMap;
@@ -172,10 +159,7 @@ unordered_map<int, vector<Employee>> umapEmpDept(vector<Employee> &emp)
     return empMap;
 }
 
-/*
-    Build a unordered map of Employees from the vector of employees
-    based on salary range
-*/
+//Function to build an unordered map based on salary range
 unordered_map<int, vector<Employee>> umapSalRange(vector<Employee> &emp)
 {
     unordered_map<int, vector<Employee>> empMap;
@@ -187,10 +171,7 @@ unordered_map<int, vector<Employee>> umapSalRange(vector<Employee> &emp)
     return empMap;
 }
 
-/*
-    Print the unordered map of salary ranges
-    Determine which range has the most employees
-*/
+//Print the unordered maps
 void uprintSalRange(unordered_map<int, vector<Employee>> &salRange)
 {
     int largestSize = 0;

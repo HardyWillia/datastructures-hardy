@@ -5,7 +5,7 @@
     Project2
 */
 
-//include statements
+//include
 #include "empmaps.h"
 #include "Employee.h"
 #include <vector>
@@ -19,7 +19,7 @@
 #include <list>
 #include <iterator>
 
-
+//using
 using std::vector;
 using std::map;
 using std::unordered_map;
@@ -31,13 +31,12 @@ using std::cin;
 using std::endl;
 using std::list;
 
-void uprintSalRange(unordered_map<int,vector<Employee>> & salRange);
 
-
+//Implementation of functions 
 int main(){
 
     // Define clock variable which will be used for timing
-        clock_t start, stop;
+    clock_t start, stop;
 
     vector<Employee> emps = employees();
     cout << "Number of employees: " << emps.size() << endl;
@@ -58,7 +57,6 @@ int main(){
 
 
     printSalRange(omapSal);
-
     cout << endl;
 
 
