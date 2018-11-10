@@ -1,10 +1,19 @@
+/*
+
+    Willia Hardy
+    wjh26@zips.uakron.edu
+    2905326
+    Project2
+*/
+
 #ifndef EMPMAPS_H_INCLUDED
 #define EMPMAPS_H_INCLUDED
 
+#include "Employee.h"
 #include <vector>
-#include <map>
 #include <unordered_map>
-#include "../Employee/Employee.h"
+#include <map>
+
 
 using std::vector;
 using std::map;

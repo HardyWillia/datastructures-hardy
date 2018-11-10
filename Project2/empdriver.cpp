@@ -1,65 +1,89 @@
 /*
     Willia Hardy
     wjh26@zips.uakron.edu
-    Student ID: 2905326
-    Project 2
+    2905326
+    Project2
 */
 
-#include "./Employee/Employee.h"
-#include "./empmaps/empmaps.h"
-#include <unordered_map>
-#include <ctime>
-#include <map>
+//include statements
+#include "empmaps.h"
+#include "Employee.h"
 #include <vector>
+#include <map>
+#include <unordered_map>
+#include <iostream>
+#include <string>
+#include <sstream>
+#include <fstream>
+#include <ctime>
+#include <list>
+#include <iterator>
 
-using std::cout;
-using std::endl;
+
+using std::vector;
 using std::map;
 using std::unordered_map;
-using std::vector;
+using std::istringstream;
+using std::cout;
+using std::string;
+using std::ifstream;
+using std::cin;
+using std::endl;
+using std::list;
 
-int main()
-{
+void uprintSalRange(unordered_map<int,vector<Employee>> & salRange);
+
+
+int main(){
+
     // Define clock variable which will be used for timing
-    clock_t start, stop;
+        clock_t start, stop;
 
-    // Get employees from data file
     vector<Employee> emps = employees();
     cout << "Number of employees: " << emps.size() << endl;
 
-    // Start the clock, build the map of employees, output time taken
-    start = clock();
-    map<int, vector<Employee>> mapEmps = mapEmpDept(emps);
-    stop = clock();
-    cout << "ORDERED Map creation with department as key clock ticks: " << double(stop - start) << endl;
-    cout << "ORDERED Map number of departments: " << mapEmps.size() << endl;
 
-    // Start the clock, build the map of employees by salary, output time taken
+    //Clock ticks for Ordered Map
     start = clock();
-    map<int, vector<Employee>> mapEmpsSalRange = mapSalRange(emps);
+    map<int,vector<Employee> > omapDept = mapEmpDept(emps);
     stop = clock();
-    cout << "ORDERED Map creation with salary as key clock ticks: " << double(stop - start) << endl;
-    cout << "ORDERED Map number of salary ranges: " << mapEmpsSalRange.size() << endl;
+    cout << "ORDERED Map creation with department as key clock ticks: " << double(stop - start) << "\n";
+    cout << "ORDERED Map number of departments: " << omapDept.size() << endl;
 
-    // Print salary ranges and emps in ranges
-    printSalRange(mapEmpsSalRange);
-    
+    start = clock();
+    map<int, vector<Employee> > omapSal = mapSalRange(emps);
+    stop = clock();
+    cout << "ORDERED Map creation with salary as key clock ticks: " << double(stop - start) << "\n";
+    cout << "ORDERED Map number of salary ranges: " << omapSal.size() << endl;
+
+
+    printSalRange(omapSal);
+
     cout << endl;
 
-    // Start the clock, build the unordered map of employees, output time taken
-    start = clock();
-    unordered_map<int, vector<Employee>> unOrderedMapEmps = umapEmpDept(emps);
-    stop = clock();
-    cout << "UNORDERED Map creation with department as key clock ticks:" << double(stop - start) << endl;
-    cout << "UNORDERED Map number of departments: " << unOrderedMapEmps.size() << endl;
 
-    // Start the clock, build the unordered map of employees by salary, output time taken
+    //Clock ticks for Unordered maps
     start = clock();
-    unordered_map<int, vector<Employee>> unOrderedMapEmpsRange = umapSalRange(emps);
+    unordered_map<int,vector<Employee> > umapDept = umapEmpDept(emps);
     stop = clock();
-    cout << "UNORDERED Map creation with salary as key clock ticks: " << double(stop - start) << endl;
-    cout << "UNORDERED Map number of salary ranges: " << unOrderedMapEmpsRange.size() << endl;
+    cout << "UNORDERED Map creation with department as key clock ticks: " << double(stop - start) << "\n";
+    cout << "UNORDERED Map number of departments: " << umapDept.size() << endl;
 
-    // Print salary ranges and emps in ranges
-    uprintSalRange(unOrderedMapEmpsRange);
+
+    start = clock();
+    unordered_map<int, vector<Employee> > umapSal = umapSalRange(emps);
+    stop = clock();
+    cout << "UNORDERED Map creation with salary as key clock ticks: " << double(stop - start) << "\n";
+    cout << "UNORDERED Map number of salary ranges: " << umapSal.size() << endl;
+
+
+    uprintSalRange(umapSal);
+    cout << endl;
+
+
+
+
+
+
+    return 0;
 }
