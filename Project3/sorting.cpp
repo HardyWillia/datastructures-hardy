@@ -5,31 +5,30 @@
     Project3
 */
 
+
+#include "heapsort.h"
+#include "insertsort.h"
+#include "mergesort.h"
+#include "quicksort.h"
 #include <iostream>
-#include <functional>
 #include <string>
 #include <fstream>
 #include <iostream>
 #include <vector>
 #include <sstream>
-#include "heapsort.h"
-#include "insertsort.h"
-#include "mergesort.h"
-#include "quicksort.h"
 #include <ctime>
-#include <numeric>
 #include <cstdlib>
 #include <algorithm>
+
 using std::cin;
 using std::cout;
 using std::endl;
-using std::function;
 using std::getline;
 using std::ifstream;
-using std::iota;
 using std::istringstream;
 using std::string;
 using std::vector;
+using std::atoi;
 
 
 vector<string> get_file(){
@@ -74,6 +73,7 @@ void print(vector<int> &vec)
 
 vector<int> generateDataSet(int n, string type = "")
 {
+	int val = 0;
     if (!type.compare("RANDOM"))
     {
         std::vector<int> ivec;
@@ -85,14 +85,22 @@ vector<int> generateDataSet(int n, string type = "")
     else if (!type.compare("DESC"))
     {
         std::vector<int> ivec(n);
-        iota(ivec.begin(), ivec.end(), 0);
+        while(ivec.begin() != ivec.end()){
+		*ivec.begin()++ = val;
+		++val;
+		
+	 }
         std::reverse(ivec.begin(), ivec.end());
         return ivec;
     }
     else
     {
         std::vector<int> ivec(n);
-        iota(ivec.begin(), ivec.end(), 0);
+       // iota(ivec.begin(), ivec.end(), 0);
+	while(ivec.begin() != ivec.end()){
+		*ivec.begin()++ = val;
+		++val;
+	}
         return ivec;
     }
 }
@@ -101,49 +109,41 @@ void runSmallDataSet(vector<int> &dataSet)
 {
     // Heap Sort
     HeapSort heap(dataSet);
-    cout << "vector before heap sort: ";
+    cout << "Vector before heap sort: ";
     print(heap.getVec());
     heap.sort();
-    cout << "vector after heap sort: ";
+    cout << "Vector after heap sort: ";
     print(heap.getVec());
     cout << endl;
 
     // Merge Sort
     MergeSort merg(dataSet);
-    cout << "vector before merge sort: ";
-
+    cout << "Vector before merge sort: ";
     print(merg.getVec());
-
     merg.sort();
-    cout << "vector after merge sort: ";
-
+    cout << "Vector after merge sort: ";
     print(merg.getVec());
     cout << endl;
 
     // Quick Sort
     QuickSort quick(dataSet);
-    cout << "vector before quick sort: ";
-
+    cout << "Vector before quick sort: ";
     print(quick.getVec());
-
     quick.sort();
-    cout << "vector after quick sort: ";
-
+    cout << "Vector after quick sort: ";
     print(quick.getVec());
     cout << endl;
 
     // Insert Sort
-    InsertSort inser(dataSet);
-    cout << "vector before insertion sort: ";
-
-    print(inser.getVec());
-
-    inser.sort();
-    cout << "vector after insertion sort: ";
-
-    print(inser.getVec());
+    InsertSort insertion(dataSet);
+    cout << "Vector before insertion sort: ";
+    print(insertion.getVec());
+    insertion.sort();
+    cout << "Vector after insertion sort: ";
+    print(insertion.getVec());
     cout << endl;
 }
+
 
 double runtime(clock_t start, clock_t stop)
 {
@@ -165,19 +165,19 @@ void runLargeDataset(int n){
     start = clock();
     heapRandom.sort();
     stop = clock();
-    cout << "heap sort random: " << runtime(start, stop) << endl;
+    cout << "Heap sort random: " << runtime(start, stop) << endl;
 
     HeapSort heapAsc(randomVec);
     start = clock();
     heapAsc.sort();
     stop = clock();
-    cout << "heap sort ascending: " << runtime(start, stop) << endl;
+    cout << "Heap sort ascending: " << runtime(start, stop) << endl;
 
     HeapSort heapDesc(randomVec);
     start = clock();
     heapDesc.sort();
     stop = clock();
-    cout << "heap sort descending: " << runtime(start, stop) << endl;
+    cout << "Heap sort descending: " << runtime(start, stop) << endl;
 
     cout << endl;
 
@@ -186,19 +186,19 @@ void runLargeDataset(int n){
     start = clock();
     mergeRandom.sort();
     stop = clock();
-    cout << "merge sort random: " << runtime(start, stop) << endl;
+    cout << "Merge sort random: " << runtime(start, stop) << endl;
 
     MergeSort mergeAsc(randomVec);
     start = clock();
     mergeAsc.sort();
     stop = clock();
-    cout << "merge sort ascending: " << runtime(start, stop) << endl;
+    cout << "Merge sort ascending: " << runtime(start, stop) << endl;
 
     MergeSort mergeDesc(randomVec);
     start = clock();
     mergeDesc.sort();
     stop = clock();
-    cout << "merge sort descending: " << runtime(start, stop) << endl;
+    cout << "Merge sort descending: " << runtime(start, stop) << endl;
 
     cout << endl;
 
@@ -207,19 +207,19 @@ void runLargeDataset(int n){
     start = clock();
     quickRandom.sort();
     stop = clock();
-    cout << "quick sort random: " << runtime(start, stop) << endl;
+    cout << "Quick sort random: " << runtime(start, stop) << endl;
 
     QuickSort quickAsc(randomVec);
     start = clock();
     quickAsc.sort();
     stop = clock();
-    cout << "quick sort ascending: " << runtime(start, stop) << endl;
+    cout << "Quick sort ascending: " << runtime(start, stop) << endl;
 
     QuickSort quickDesc(randomVec);
     start = clock();
     quickDesc.sort();
     stop = clock();
-    cout << "quick sort descending: " << runtime(start, stop) << endl;
+    cout << "Quick sort descending: " << runtime(start, stop) << endl;
 
     cout << endl;
 
@@ -228,19 +228,19 @@ void runLargeDataset(int n){
     start = clock();
     insertionRandom.sort();
     stop = clock();
-    cout << "insertion sort random: " << runtime(start, stop) << endl;
+    cout << "Insertion sort random: " << runtime(start, stop) << endl;
 
     InsertSort insertionAsc(randomVec);
     start = clock();
     insertionAsc.sort();
     stop = clock();
-    cout << "insertion sort ascending: " << runtime(start, stop) << endl;
+    cout << "Insertion sort ascending: " << runtime(start, stop) << endl;
 
     InsertSort insertionDesc(randomVec);
     start = clock();
     insertionDesc.sort();
     stop = clock();
-    cout << "insertion sort descending: " << runtime(start, stop) << endl;
+    cout << "Insertion sort descending: " << runtime(start, stop) << endl;
 
     cout << endl;
 
@@ -251,15 +251,20 @@ int main(int argc, const char *argv[])
 
     vector<int> dataSet;
 
-    // readData([&](string &line) {
-    //     std::istringstream iss(line);
-    //     for (std::string s; iss >> s;)
-    //     {
-    //         // Convert string to an int
-    //         int i = std::stoi(s);
-    //         dataSet.push_back(i);
-    //     }
-    // });
+    // get the data from the input file
+    vector<string> records = get_file();
+
+	string line;
+	istringstream iss(line);    
+
+    // iterate through it to get what we want
+    for(string s; iss >> s;)
+    {
+
+	int i = atoi(s.c_str());
+	dataSet.push_back(i);
+    }
+
     int N = 0;
 
     cout << "Enter the number of integers to sort: ";
