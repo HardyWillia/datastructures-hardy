@@ -127,6 +127,7 @@ void runSmallDataSet(vector<int> &dataSet)
         cout << *iter << " ";
     }
     cout << endl;
+    cout << endl;
 
     cout << "Vector before merge sort: ";
     for(vector<int>::iterator iter = sortmerge.begin(); iter != sortmerge.end(); iter++)
@@ -142,7 +143,8 @@ void runSmallDataSet(vector<int> &dataSet)
         cout << *iter << " ";
     }
     cout << "\n";
-
+    cout << endl;
+	
     cout << "Vector before quick sort: ";
     for(vector<int>::iterator iter = sortquick.begin(); iter != sortquick.end(); iter++)
     {
@@ -157,7 +159,8 @@ void runSmallDataSet(vector<int> &dataSet)
         cout << *iter << " ";
     }
     cout << endl;
-
+    cout << endl;
+	
     cout << "Vector before insertion sort: ";
     for(vector<int>::iterator iter = sortinsert.begin(); iter != sortinsert.end(); iter++)
     {
@@ -172,6 +175,7 @@ void runSmallDataSet(vector<int> &dataSet)
         cout << *iter << " ";
     }
 
+    cout << endl;
     cout << endl;
 }
 
