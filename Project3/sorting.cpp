@@ -235,17 +235,17 @@ void runLargeDataset(int n){
     // Quick Sort
     
     start = clock();
-    quickSort<int>(randomVec);
+    quicksort<int>(randomVec);
     stop = clock();
     cout << "Quick sort random: " << runtime(start, stop) << endl;
 
     start = clock();
-    quickSort<int>(ascVec);
+    quicksort<int>(ascVec);
     stop = clock();
     cout << "Quick sort ascending: " << runtime(start, stop) << endl;
 
     start = clock();
-    quickSort<int>(descVec);
+    quicksort<int>(descVec);
     stop = clock();
     cout << "Quick sort descending: " << runtime(start, stop) << endl;
 
