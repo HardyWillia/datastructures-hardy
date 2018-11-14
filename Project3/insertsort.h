@@ -1,17 +1,17 @@
 #ifndef insertsort_h
 #define insertsort_h
-#include <vector>
-using std::vector;
 
-class InsertSort
+template <typename Comparable>
+void insertionSort( vector<Comparable> & a)
 {
-public:
-  InsertSort(vector<int> a);
-  void sort();
-  vector<int> &getVec() { return vec; }
+    for( int p = 1; p < a.size( ); ++p )
+    {
+        Comparable tmp = std::move( a[ p ] );
+        int j;
+        for( j = p; j > 0 && tmp < a[ j - 1 ]; --j )
+            a[ j ] = std::move( a[ j - 1 ] );
+        a[ j ] = std::move( tmp );
+    }
+}
 
-private:
-  vector<int> vec;
-};
-
-#endif // insertsort_h
+#endif /* insertsort_h */
