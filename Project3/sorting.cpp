@@ -87,18 +87,14 @@ vector<int> generateDataSet(int n, string type = "")
     else if (!type.compare("DESC"))
     {
         std::vector<int> ivec(n);
-        while(ivec.begin() != ivec.end()){
-		*ivec.begin()++ = val;
-		++val;
-		
-	 }
+	iota(ivec.begin(), ivec.end(), 0);
         std::reverse(ivec.begin(), ivec.end());
         return ivec;
     }
     else
     {
         std::vector<int> ivec(n);
-       // iota(ivec.begin(), ivec.end(), 0);
+       iota(ivec.begin(), ivec.end(), 0);
 	while(ivec.begin() != ivec.end()){
 		*ivec.begin()++ = val;
 		++val;
