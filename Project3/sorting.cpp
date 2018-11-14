@@ -269,7 +269,7 @@ int main(int argc, const char *argv[])
 
     vector<int> dataSet;
 
-    int N = 0;
+    int N;
 
     cout << "Enter the number of integers to sort: ";
     cin >> N;
