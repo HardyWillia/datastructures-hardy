@@ -158,9 +158,12 @@ double runtime(clock_t start, clock_t stop)
 
 
 void runLargeDataset(int N){
-    // Define clock variable which will be used for timing
+    
+
+     // Define clock variable which will be used for timing
      clock_t start, stop;
 
+    //Get random numbers to generate
     vector<int> ascVec;
     for (int x = 1; x <= N; x++)
     {
@@ -204,7 +207,7 @@ void runLargeDataset(int N){
     cout << endl;
 	
 
-    randVec2 = randVec;
+    randomVec2 = randomVec;
     descVec2 = descVec;
     ascVec2 = ascVec;
 	
@@ -226,7 +229,7 @@ void runLargeDataset(int N){
 
     cout << endl;
 
-    randVec2 = randVec;
+    randomVec2 = randomVec;
     descVec2 = descVec;
     ascVec2 = ascVec;
 	
@@ -248,7 +251,7 @@ void runLargeDataset(int N){
 
     cout << endl;
 
-    randVec2 = randVec;
+    randomVec2 = randomVec;
     descVec2 = descVec;
     ascVec2 = ascVec;
 	
