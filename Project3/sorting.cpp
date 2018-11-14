@@ -187,73 +187,84 @@ void runLargeDataset(int N){
 
      // Heap Sort
     start = clock();
-    heapsort<int>(randomVec2);
+    heapsort(randomVec2);
     stop = clock();
     cout << "Heap sort random: " << runtime(start, stop) << endl;
     
     start = clock();
-    heapsort<int>(ascVec2);
+    heapsort(ascVec2);
     stop = clock();
     cout << "Heap sort ascending: " << runtime(start, stop) << endl;
 
     start = clock();
-    heapsort<int>(descVec2);
+    heapsort(descVec2);
     stop = clock();
     cout << "Heap sort descending: " << runtime(start, stop) << endl;
 
     cout << endl;
 	
 
+    randVec2 = randVec;
+    descVec2 = descVec;
+    ascVec2 = ascVec;
+	
     // Merge Sort
     start = clock();
-    mergeSort<int>(randomVec2);
+    mergeSort(randomVec2);
     stop = clock();
     cout << "Merge sort random: " << runtime(start, stop) << endl;
 
     start = clock();
-    mergeSort<int>(ascVec2);
+    mergeSort(ascVec2);
     stop = clock();
     cout << "Merge sort ascending: " << runtime(start, stop) << endl;
 	
     start = clock(); 
-    mergeSort<int>(descVec2);
+    mergeSort(descVec2);
     stop = clock();
     cout << "Merge sort descending: " << runtime(start, stop) << endl;
 
     cout << endl;
 
+    randVec2 = randVec;
+    descVec2 = descVec;
+    ascVec2 = ascVec;
+	
     // Quick Sort
-    
     start = clock();
-    quicksort<int>(randomVec2);
+    quicksort(randomVec2);
     stop = clock();
     cout << "Quick sort random: " << runtime(start, stop) << endl;
 
     start = clock();
-    quicksort<int>(ascVec2);
+    quicksort(ascVec2);
     stop = clock();
     cout << "Quick sort ascending: " << runtime(start, stop) << endl;
 
     start = clock();
-    quicksort<int>(descVec2);
+    quicksort(descVec2);
     stop = clock();
     cout << "Quick sort descending: " << runtime(start, stop) << endl;
 
     cout << endl;
 
+    randVec2 = randVec;
+    descVec2 = descVec;
+    ascVec2 = ascVec;
+	
     // Insert Sort
     start = clock();
-    insertSort<int>(randomVec2);
+    insertSort(randomVec2);
     stop = clock();
     cout << "Insertion sort random: " << runtime(start, stop) << endl;
 
     start = clock();
-    insertSort<int>(ascVec2);
+    insertSort(ascVec2);
     stop = clock();
     cout << "Insertion sort ascending: " << runtime(start, stop) << endl;
 
     start = clock();
-    insertSort<int>(descVec2);
+    insertSort(descVec2);
     stop = clock();
     cout << "Insertion sort descending: " << runtime(start, stop) << endl;
 
