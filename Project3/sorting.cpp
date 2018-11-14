@@ -29,8 +29,12 @@ using std::istringstream;
 using std::string;
 using std::vector;
 using std::atoi;
+using std::swap;
+using std::move;
 
 
+
+//Function to get the file contents
 vector<string> get_file(){
 
     ifstream recordFile;
@@ -107,40 +111,71 @@ vector<int> generateDataSet(int n, string type = "")
 
 void runSmallDataSet(vector<int> &dataSet)
 {
-    // Heap Sort
-    HeapSort heap(dataSet);
+    vector<int> sortheap = original;
+    vector<int> sortmerge = original;
+    vector<int> sortquick = original;
+    vector<int> sortinsert = original;
+
+
     cout << "Vector before heap sort: ";
-    print(heap.getVec());
-    heap.sort();
+    for(vector<int>::iterator iter = sortheap.begin(); iter != sortheap.end(); iter++)
+    {
+        cout << *iter << " ";
+    }
+    cout << endl;
+
     cout << "Vector after heap sort: ";
-    print(heap.getVec());
+    heapsort<int>(sortheap);
+    for(vector<int>::iterator iter = sortheap.begin(); iter != sortheap.end(); iter++)
+    {
+        cout << *iter << " ";
+    }
     cout << endl;
 
-    // Merge Sort
-    MergeSort merg(dataSet);
     cout << "Vector before merge sort: ";
-    print(merg.getVec());
-    merg.sort();
+    for(vector<int>::iterator iter = sortmerge.begin(); iter != sortmerge.end(); iter++)
+    {
+        cout << *iter << " ";
+    }
+    cout << endl;
+
     cout << "Vector after merge sort: ";
-    print(merg.getVec());
-    cout << endl;
+    mergeSort<int>(sortmerge);
+    for(vector<int>::iterator iter = sortmerge.begin(); iter != sortmerge.end(); iter++)
+    {
+        cout << *iter << " ";
+    }
+    cout << "\n";
 
-    // Quick Sort
-    QuickSort quick(dataSet);
     cout << "Vector before quick sort: ";
-    print(quick.getVec());
-    quick.sort();
-    cout << "Vector after quick sort: ";
-    print(quick.getVec());
+    for(vector<int>::iterator iter = sortquick.begin(); iter != sortquick.end(); iter++)
+    {
+        cout << *iter << " ";
+    }
     cout << endl;
 
-    // Insert Sort
-    InsertSort insertion(dataSet);
+    cout << "Vector after quick sort: ";
+    quicksort<int>(sortquick);
+    for(vector<int>::iterator iter = sortquick.begin(); iter != sortquick.end(); iter++)
+    {
+        cout << *iter << " ";
+    }
+    cout << endl;
+
     cout << "Vector before insertion sort: ";
-    print(insertion.getVec());
-    insertion.sort();
+    for(vector<int>::iterator iter = sortinsert.begin(); iter != sortinsert.end(); iter++)
+    {
+        cout << *iter << " ";
+    }
+    cout << endl;
+
     cout << "Vector after insertion sort: ";
-    print(insertion.getVec());
+    insertionSort<int>(sortinsert);
+    for(vector<int>::iterator iter = sortinsert.begin(); iter != sortinsert.end(); iter++)
+    {
+        cout << *iter << " ";
+    }
+
     cout << endl;
 }
 
@@ -153,7 +188,7 @@ double runtime(clock_t start, clock_t stop)
 
 void runLargeDataset(int n){
     // Define clock variable which will be used for timing
-        clock_t start, stop;
+     clock_t start, stop;
 
     vector<int> randomVec = generateDataSet(n, "RANDOM");
     vector<int> descVec = generateDataSet(n, "DESC");
@@ -161,91 +196,84 @@ void runLargeDataset(int n){
 
 
      // Heap Sort
-    HeapSort heapRandom(randomVec);
     start = clock();
-    heapRandom.sort();
+    heapsort<int>(randomVec);
     stop = clock();
     cout << "Heap sort random: " << runtime(start, stop) << endl;
-
-    HeapSort heapAsc(randomVec);
+    
     start = clock();
-    heapAsc.sort();
+    heapsort<int>(ascVec);
     stop = clock();
     cout << "Heap sort ascending: " << runtime(start, stop) << endl;
 
-    HeapSort heapDesc(randomVec);
     start = clock();
-    heapDesc.sort();
+    heapsort<int>(descVec);
     stop = clock();
     cout << "Heap sort descending: " << runtime(start, stop) << endl;
 
     cout << endl;
+	
 
     // Merge Sort
-    MergeSort mergeRandom(randomVec);
     start = clock();
-    mergeRandom.sort();
+    mergeSort<int>(randomVec);
     stop = clock();
     cout << "Merge sort random: " << runtime(start, stop) << endl;
 
-    MergeSort mergeAsc(randomVec);
     start = clock();
-    mergeAsc.sort();
+    mergeSort<int>(ascVec);
     stop = clock();
     cout << "Merge sort ascending: " << runtime(start, stop) << endl;
-
-    MergeSort mergeDesc(randomVec);
-    start = clock();
-    mergeDesc.sort();
+	
+    start = clock(); 
+    mergeSort<int>(descVec);
     stop = clock();
     cout << "Merge sort descending: " << runtime(start, stop) << endl;
 
     cout << endl;
 
     // Quick Sort
-    QuickSort quickRandom(randomVec);
+    
     start = clock();
-    quickRandom.sort();
+    quickSort<int>(randomVec);
     stop = clock();
     cout << "Quick sort random: " << runtime(start, stop) << endl;
 
-    QuickSort quickAsc(randomVec);
     start = clock();
-    quickAsc.sort();
+    quickSort<int>(ascVec);
     stop = clock();
     cout << "Quick sort ascending: " << runtime(start, stop) << endl;
 
-    QuickSort quickDesc(randomVec);
     start = clock();
-    quickDesc.sort();
+    quickSort<int>(descVec);
     stop = clock();
     cout << "Quick sort descending: " << runtime(start, stop) << endl;
 
     cout << endl;
 
     // Insert Sort
-    InsertSort insertionRandom(randomVec);
     start = clock();
-    insertionRandom.sort();
+    insertSort<int>(randomVec);
     stop = clock();
     cout << "Insertion sort random: " << runtime(start, stop) << endl;
 
-    InsertSort insertionAsc(randomVec);
     start = clock();
-    insertionAsc.sort();
+    insertSort<int>(ascVec);
     stop = clock();
     cout << "Insertion sort ascending: " << runtime(start, stop) << endl;
 
-    InsertSort insertionDesc(randomVec);
     start = clock();
-    insertionDesc.sort();
+    insertSort<int>(descVec);
     stop = clock();
     cout << "Insertion sort descending: " << runtime(start, stop) << endl;
 
     cout << endl;
+	
 
 }
 
+
+//Main running program
 int main(int argc, const char *argv[])
 {
 
