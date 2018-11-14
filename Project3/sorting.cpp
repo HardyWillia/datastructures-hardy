@@ -35,12 +35,12 @@ using std::move;
 
 
 //Function to get the file contents
-vector<string> get_file(){
+vector<int> get_file(){
 
     ifstream recordFile;
     string filename;
     string line;
-    vector<string> lines;
+    vector<int> nums;
 
     //Prompt the user for a file that has the graph data
     cout << "Please enter the file name to process: ";
@@ -56,12 +56,10 @@ vector<string> get_file(){
 
     while(getline(recordFile, line)){
 
-        if(line.length() > 0){
-            lines.push_back(line);
-        }
+            nums.push_back(stoi(line));
     }
 
-    return lines;
+    return nums;
 }
 
 
@@ -111,6 +109,8 @@ vector<int> generateDataSet(int n, string type = "")
 
 void runSmallDataSet(vector<int> &dataSet)
 {
+    
+    vector<int> original = get_file();
     vector<int> sortheap = original;
     vector<int> sortmerge = original;
     vector<int> sortquick = original;
@@ -278,20 +278,6 @@ int main(int argc, const char *argv[])
 {
 
     vector<int> dataSet;
-
-    // get the data from the input file
-    vector<string> records = get_file();
-
-	string line;
-	istringstream iss(line);    
-
-    // iterate through it to get what we want
-    for(string s; iss >> s;)
-    {
-
-	int i = atoi(s.c_str());
-	dataSet.push_back(i);
-    }
 
     int N = 0;
 
