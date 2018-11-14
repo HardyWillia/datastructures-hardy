@@ -3,7 +3,7 @@
 
 using std::vector;
 
-/
+/*
  * Return median of left, center, and right.
  * Order these and hide the pivot.
  */
