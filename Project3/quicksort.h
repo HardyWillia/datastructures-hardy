@@ -24,7 +24,7 @@ const Comparable & median3( vector<Comparable> &a, int left, int right)
     return a[ right - 1 ];
 }
 
-/
+/*
  * Internal quicksort method that makes recursive calls.
  * Uses median-of-three partitioning and a cutoff of 10.
  * a is an array of Comparable items.
