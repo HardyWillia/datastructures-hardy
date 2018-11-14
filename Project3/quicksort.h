@@ -40,7 +40,7 @@ void quicksort( vector<Comparable> & a, int left, int right )
         return;
     }
 
-    const Comparable & pivot = median3( a, left, right );
+    const int &pivot = median3( a, left, right );
     
     //begin partitioning
     int i = left, j = right - 1;
@@ -60,11 +60,6 @@ void quicksort( vector<Comparable> & a, int left, int right )
     quicksort(a,i+1,right);
 }
 
-template <typename Comparable>
-void quicksort( vector<Comparable> & a )
-{
-    quicksort(a, 0, a.size() - 1);
-}
 
 
 #endif /* quicksort_h */
