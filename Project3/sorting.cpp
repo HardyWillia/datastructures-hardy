@@ -5,7 +5,7 @@
     Project3
 */
 
-
+//include statements
 #include "heapsort.h"
 #include "insertsort.h"
 #include "mergesort.h"
@@ -20,6 +20,7 @@
 #include <cstdlib>
 #include <algorithm>
 
+//using statements
 using std::cin;
 using std::cout;
 using std::endl;
@@ -62,7 +63,7 @@ vector<int> get_file(){
     return nums;
 }
 
-
+//Function to print the vector
 void print(vector<int> &vec)
 {
     for (vector<int>::iterator item = vec.begin(); item != vec.end(); ++item)
@@ -73,7 +74,7 @@ void print(vector<int> &vec)
     cout << endl;
 }
 
-
+//Function to execute the small dataset
 void runSmallDataSet(vector<int> &dataSet)
 {
     
