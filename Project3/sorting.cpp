@@ -114,7 +114,7 @@ void runSmallDataSet(vector<int> &dataSet)
     {
         cout << *iter << " ";
     }
-    cout << "\n";
+    cout << endl;
     cout << endl;
 	
     cout << "Vector before quick sort (no cutoff): ";
