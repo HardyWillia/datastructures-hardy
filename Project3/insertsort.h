@@ -2,7 +2,7 @@
 #define insertsort_h
 
 template <typename Comparable>
-void insertionSort( vector<Comparable> & a)
+void insertSort( vector<Comparable> & a)
 {
     for( int p = 1; p < a.size( ); ++p )
     {
