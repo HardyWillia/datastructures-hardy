@@ -24,7 +24,7 @@ const Comparable & median3( vector<Comparable> & a, int left, int right)
 
 /**
  * Internal quicksort method that makes recursive calls.
- * Uses median-of-three partitioning and no cutoff.
+ * Uses median-of-three partitioning and a cutoff of 10.
  * a is an array of Comparable items.
  * left is the left-most index of the subarray.
  * right is the right-most index of the subarray.
@@ -32,15 +32,13 @@ const Comparable & median3( vector<Comparable> & a, int left, int right)
 template <typename Comparable>
 void quicksort( vector<Comparable> & a, int left, int right )
 {
-  
-  //Function that was changed to allow for more than 10 elements
     if (left + 1 >= right)
     {
         std::swap(a[left], a[right]);
         return;
     }
 
-    const Comparable &pivot = median3( a, left, right );
+    const Comparable & pivot = median3( a, left, right );
     
     //begin partitioning
     int i = left, j = right - 1;
@@ -65,6 +63,9 @@ void quicksort( vector<Comparable> & a )
 {
     quicksort(a, 0, a.size() - 1);
 }
+
+
+
 
 
 #endif /* quicksort_h */
