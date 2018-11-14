@@ -153,7 +153,7 @@ void runSmallDataSet(vector<int> &dataSet)
     cout << endl;
 
     cout << "Vector after quick sort: ";
-    quicksort<int>(sortquick, 0, sortquick.size() - 1);
+    quicksort<int>(sortquick);
     for(vector<int>::iterator iter = sortquick.begin(); iter != sortquick.end(); iter++)
     {
         cout << *iter << " ";
@@ -240,12 +240,12 @@ void runLargeDataset(int n){
     cout << "Quick sort random: " << runtime(start, stop) << endl;
 
     start = clock();
-    quicksort<int>(ascVec, 0, ascVec.size() - 1);
+    quicksort<int>(ascVec);
     stop = clock();
     cout << "Quick sort ascending: " << runtime(start, stop) << endl;
 
     start = clock();
-    quicksort<int>(descVec, 0, descVec.size() -1);
+    quicksort<int>(descVec);
     stop = clock();
     cout << "Quick sort descending: " << runtime(start, stop) << endl;
 
