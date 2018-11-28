@@ -30,6 +30,10 @@ public:
    // returns the number of columns in the maze
    int getCol() const {return col;}
 
+   int getMaze() const {
+    return col * row;
+}
+
 private:
     int row;
     int col;

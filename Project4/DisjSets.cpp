@@ -34,7 +34,25 @@ void DisjSets::unionSets(int root1, int root2) {
  */
 int DisjSets::find( int x )
 {
-   //write some code
-}
 
-bool DisjSets::isConnected(int n1, int n2, DisjSets &ds);
+	//This code was added	
+   if (s[x] < 0)
+	{
+		return x;
+	}
+	else
+	{
+		const int prnt = s[x];
+		const int grandprnt = s[prnt];
+
+		if (grandprnt < 0)
+		{
+			return prnt;
+		}
+		else
+		{
+
+			return s[x] = find(grandprnt);
+		}
+	}
+}
