@@ -1,3 +1,10 @@
+/*
+    Willia Hardy
+    wjh26@zips.uakron.edu
+    2905323
+
+*/
+
 #ifndef MAZECELL_H_INCLUDED
 #define MAZECELL_H_INCLUDED
 

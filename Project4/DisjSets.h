@@ -1,3 +1,10 @@
+/*
+    Willia Hardy
+    wjh26@zips.uakron.edu
+    2905323
+
+*/
+
 #ifndef DISJ_SETS_H
 #define DISJ_SETS_H
 
