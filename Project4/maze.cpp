@@ -1,3 +1,11 @@
+/*
+    Willia Hardy
+    wjh26@zips.uakron.edu
+    2905323
+
+*/
+
+
 #include "maze.h"
 #include "mazeCell.h"
 #include <iostream>

@@ -1,3 +1,10 @@
+/*
+    Willia Hardy
+    wjh26@zips.uakron.edu
+    2905323
+
+*/
+
 // Include statements
 #include <iostream>
 #include <string>
