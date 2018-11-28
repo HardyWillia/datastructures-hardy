@@ -32,7 +32,10 @@ public:
 
    int getMaze() const {
     return col * row;
-}
+    }
+
+  int determineRow(int cell) const { return cell / col; }
+  int determineColumn(int cell) const { return cell % col; }
 
 private:
     int row;

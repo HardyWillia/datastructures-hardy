@@ -25,7 +25,7 @@ class DisjSets
     explicit DisjSets( int numElements );
 
     int find( int x );  // you will write code per problem 8.16a in our book
-	bool isConnected(int n1, int n2, DisjSets &ds);
+	  bool isConnected(int n1, int n2, DisjSets &ds);
     void unionSets( int root1, int root2 );
 
   private:
