@@ -27,19 +27,19 @@ maze::maze(int r, int c)
 
     for (int i = 0; i < numCells; ++i)
     {
-        mazeCell c;
+        mazeCell cell;
 
         if (i == 0)
         {
-            c.setLeft(false);
-            c.setTop(false);
+            cell.setLeft(false);
+            cell.setTop(false);
         }
         else if (i == numCells - 1)
         {
-            c.setRight(false);
-            c.setBot(false);
+            cell.setRight(false);
+            cell.setBot(false);
         }
-        theMaze.push_back(c);
+        theMaze.push_back(cell);
     }
 }
 
@@ -48,20 +48,45 @@ maze::maze(int r, int c)
 // with respect to cell)
 bool maze::neighbors(int cell, int neigh) const
 {
-    int cellCol = determineColumn(cell);
-    int cellRow = determineRow(cell);
-    int neighCol = determineColumn(neigh);
-    int neighRow = determineRow(neigh);
+        bool neighbors;
 
-    int colDif = cellCol - neighCol;
-    int rowDif = cellRow - neighRow;
-
-    if (abs(colDif) > 1 || abs(rowDif) > 1)
+    // if the two cells are in the same column
+    if (getCellCol(cell) == getCellCol(neigh))
     {
-        return false;
+        // determine the difference between the rows
+        int row_diff = abs(getCellRow(cell) - getCellRow(neigh));
+
+        // if the difference is 1, this means they are right next to each other
+        if (row_diff == 1)
+        {
+            neighbors = true;
+        }
+
+        else
+        {
+            neighbors = false;
+        }
     }
 
-    return (colDif == -1 && rowDif == 0) || (colDif == 1 && rowDif == 0) || (colDif == 0 && rowDif == 1) || (colDif == 0 && rowDif == -1);
+    // if the two cells are in the same row
+    if (getCellRow(cell) == getCellRow(neigh))
+    {
+        // determine the difference between the columns
+        int col_diff = abs(getCellCol(cell) - getCellCol(neigh));
+
+        // if the difference is 1, this means they are right next to each other
+        if (col_diff == 1)
+        {
+            neighbors = true;
+        }
+
+        else
+        {
+            neighbors = false;
+        }
+    }
+
+        return neighbors;
 }
 
 // get rid of cell's wall between cell and neighbor
@@ -70,14 +95,20 @@ bool maze::neighbors(int cell, int neigh) const
 void maze::smashWall(int cell, int neigh)
 {
 
-    int cellCol = determineColumn(cell);
-    int cellRow = determineRow(cell);
-    int neighCol = determineColumn(neigh);
-    int neighRow = determineRow(neigh);
+    //Determine the location of the cell
+    int cellCol = getCellCol(cell);
+    int cellRow = getCellRow(cell);
 
+    //Find out where the neighbor is
+    int neighCol = getCellCol(neigh);
+    int neighRow = getCellRow(neigh);
+
+    //Find the distance of the columns and rows
     int colDif = cellCol - neighCol;
     int rowDif = cellRow - neighRow;
 
+
+    //Determine neighbors to the left, right, above and below
     mazeCell &cellCell = theMaze[cell];
     mazeCell &neighCell = theMaze[neigh];
 
@@ -110,9 +141,8 @@ void maze::smashWall(int cell, int neigh)
 //print the maze
 void maze::printMaze()
 {
-
-    // Build the top layer
-    for (int i = 0; i < getCol(); ++i)
+    // this is for top
+    for(int i = 0; i < getCol(); i++)
     {
         if (i == 0)
         {
@@ -124,7 +154,8 @@ void maze::printMaze()
         }
     }
 
-    cout << endl;
+    cout << "\n";
+
     int numCells = getMaze();
 
     for (std::vector<mazeCell>::iterator it = theMaze.begin(); it != theMaze.end(); ++it)
